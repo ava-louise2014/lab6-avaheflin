@@ -22,9 +22,18 @@ def encode_password(password):
         encoded_password += str(encoded_digit)
     return encoded_password
 
+#nora nguyen
+def decode(encoded_password):
+    decoded = []
+    for i in encoded_password:
+        x = int(i)
+        x = (x-3)%10
+        decoded.append(str(x))
+        decoded_password = ''.join(decoded)
+    print(f"The encoded password is {encoded_password}, and the original password is {decoded_password}")
+
 if __name__ == '__main__':
     user_input = 0
-    menu_display()
 #these are the conditions of if the user inputs a certain number for the menu, and it tells the program what to do if that menu option is selected
     while True:
         menu_display()
@@ -32,10 +41,10 @@ if __name__ == '__main__':
         #encoded option
         if user_input == '1':
             password_to_encode = input("Please enter your password to encode: ")
-            password = "12345678" #Replace with your 8 digit password
-            enocded_password = encode_password(password)
+            enocded_password = encode_password(password_to_encode)
             print("Your password has been encoded and stored!", enocded_password)
-
+        if user_input == '2':
+            decode(enocded_password)
         #exit option
         if user_input == '3':
             break
